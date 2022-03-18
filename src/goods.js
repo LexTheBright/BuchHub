@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDK-yVgixBJPE-xQnNmWtHpLbOW9xuwLWw",
@@ -11,20 +12,21 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
+import { showAuthForm } from "./modules/authUser";
+showAuthForm()
+
 import { checkDouble } from "./modules/regex";
 checkDouble()
-
-import { search } from "./modules/search";
-search()
 
 // import { cart } from "./modules/cart";
 // import { getGoods } from "./modules/getGoods";
 // getGoods()
-import { getBooks } from './modules/getbooks'; 
-getBooks()
 
 import { reg } from "./modules/reg";
 reg()
 
-import { showAuthForm } from "./modules/authUser";
-showAuthForm()
+import { search } from "./modules/search";
+search()
+
+// import { getBooks } from './modules/getbooks'; 
+// getBooks()

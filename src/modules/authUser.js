@@ -1,4 +1,5 @@
 import { getAuth, signOut, onAuthStateChanged, signInWithEmailAndPassword, browserSessionPersistence  } from "firebase/auth"
+import { getBooks } from "./getbooks"
 
 export const showAuthForm = () => {
   const SignInButton = document.querySelector('.button-signIn')
@@ -15,6 +16,7 @@ export const showAuthForm = () => {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     // auth.setPersistence(browserSessionPersistence)
+    getBooks()
     if (user) {
       disableBtns(false)
       const nick = document.getElementById('nick-place')
@@ -31,6 +33,7 @@ export const showAuthForm = () => {
       // ...
     } else {
       disableBtns(true)
+      localStorage.clear()
       SignInButton.style.display = 'flex'
       authDisp.forEach(child => child.style.display = 'none')
       // User is signed out

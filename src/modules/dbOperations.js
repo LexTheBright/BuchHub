@@ -24,29 +24,30 @@ export const createUserInDB = async (nickname, email, uid) => {
 
 export const getUserBooksFromServer = async (nameOfCollection) => {
   const auth = getAuth()
-  var db = getFirestore()
-  try {
-    const querySnapshot = await getDocs(collection(db, "USERS", auth.currentUser.displayName, nameOfCollection))
+  if (auth.currentUser) {
+    var db = getFirestore()
     var userBooks = []
+    try {
+      const querySnapshot = await getDocs(collection(db, "USERS", auth.currentUser.displayName, nameOfCollection))
       querySnapshot.forEach(doc => {
         userBooks.push(doc.data())
       })
+    } catch (e) {
+      console.error(e.message)
+    }
     return userBooks
-  } catch (e) {
-    console.error(e.message)
-  }
+  } 
 }
 
-export const addBookIntoFavorite = async (book) => {
+export const addBookIntoCollection = async (nameOfCollection, book) => {
   const auth = getAuth()
-  var db = getFirestore()
-  try {
-      await setDoc(doc(db, "USERS/" + auth.currentUser.displayName + "/Favorite", 'book.title'), {
-      title: "meh",
-      text: "kek",
-    })
-  } catch (e) {
-    console.error(e.message)
+  if (auth.currentUser) { 
+    var db = getFirestore()
+    try {
+      await setDoc(doc(db, "USERS/" + auth.currentUser.displayName + "/" + nameOfCollection, book.id), book)
+    } catch (e) {
+      console.error(e.message)
+    }
   }
 }
 

@@ -130,8 +130,8 @@ export const search = function () {
     .then((data) => {
       // const array = category ? data.filter((item) => item[category] == value) : data
       const array = data.items     
-      array.map(book => book.isAddedtoCol = false)
-      array.map(book => book.isAddedtoFav = false) 
+      array.map(book => book.isAddedToShelf = false)
+      array.map(book => book.isAddedtoFav = false)
       if (window.location.pathname !== "/goods.html") window.location.href = '/goods.html'
       else if (array) {
         localStorage.setItem('searched', JSON.stringify(array))

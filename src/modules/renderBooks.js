@@ -1,3 +1,5 @@
+import { getUserBooksFromServer } from "./dbOperations"
+
 var dict = {
     Фантастика : "Fiction",
     Поэзия : "Poetry",
@@ -44,12 +46,36 @@ var dict = {
   
   goodsContainer.innerHTML = ''
   if (books) {
+    const curTitle = document.querySelector('.section-title')
+    var curCategory
+    if (dict[curTitle.innerText] != undefined) curCategory = dict[curTitle.innerText]
+    else curCategory = 'searched'
+    localStorage.setItem('lastCategory', curCategory)
+
+    var userShelf 
+    getUserBooksFromServer('userBookshelf').then(res => {
+      if (res) {
+        localStorage.setItem('userBookshelf', JSON.stringify(res))
+        userShelf = res
+        console.log(userShelf)
+      }
+    })
+    var userFavorites 
+    getUserBooksFromServer('userFavorites').then(res => {
+      if (res) {
+        localStorage.setItem('userFavorites', JSON.stringify(res))
+        userFavorites = res
+        console.log(userFavorites)
+      }
+    })
+
     books.forEach((book) => {
+      //if ()
       // console.log(getKeyByValue(dict, book.volumeInfo.categories)  + ' is key')
-      var curCategory
-      const isUndef = dict[document.querySelector('.section-title').innerText]
-      if (isUndef != undefined) curCategory = dict[document.querySelector('.section-title').innerText]
-      else curCategory = 'searched'
+      // var curCategory
+      // const isUndef = dict[document.querySelector('.section-title').innerText]
+      // if (isUndef != undefined) curCategory = dict[document.querySelector('.section-title').innerText]
+      // else curCategory = 'searched'
       
       const bookBlock = document.createElement('div')
 
@@ -114,5 +140,4 @@ var dict = {
       goodsContainer.append(bookBlock) 
     })
   }
-  console.dir(books)
 }

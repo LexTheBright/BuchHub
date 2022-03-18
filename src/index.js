@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDK-yVgixBJPE-xQnNmWtHpLbOW9xuwLWw",
   authDomain: "firsttry-abd90.firebaseapp.com",
@@ -11,18 +12,18 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
+import { showAuthForm } from "./modules/authUser";
+showAuthForm()
+
 import { checkDouble } from "./modules/regex";
 checkDouble()
 
 // import { cart } from "./modules/cart";
-import { getBooks } from "./modules/getbooks";
-getBooks()
+// import { getBooks } from "./modules/getbooks";
+// getBooks()
  
 import { reg } from "./modules/reg";
 reg()
-
-import { showAuthForm } from "./modules/authUser";
-showAuthForm()
 
 import { search } from "./modules/search";
 search()
