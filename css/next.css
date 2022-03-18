@@ -1,0 +1,166 @@
+.books-card {
+  display: flex;
+  position: relative;
+  text-align: left;
+  /* min-height: 300px; */
+  background-color: #fafafa;
+  padding: 6px;
+  border-radius: 10px;
+  font-family: "Robot Slab", sans-serif;
+  font-style: normal;
+  color: #000000;
+}
+
+.books-place {
+  display: flex;
+  position: relative;
+  margin: auto;
+  display: block;
+  /* min-width: 450px; */
+  /* border: 1px solid black; */
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.cart-img-place {
+  max-width: 180px;
+  /* min-height: 285px; */
+  /* border: 1px solid black; */
+  display: inline-flex;
+  align-items: center;
+  /* margin-left: 12px; */
+}
+
+.books-image {
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.cart-description {
+  float: right;
+  min-width: 240px;
+  max-width: 245px;
+  height: 280px;
+  max-height: 300px;
+  /* border: 1px solid black; */
+  margin-left: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-description p {
+  margin-left: 5px;
+}
+
+.books-title {
+  max-width: 239px;
+  max-height: 57px;
+  overflow: hidden;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 19px;
+  color: #cf0000;
+  margin: 0px 0px;
+  margin-left: 5px;
+}
+
+.books-author {
+  max-height: 38px;
+  overflow: hidden;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 19px;
+  /* identical to box height */
+  color: #232d33;
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+
+.year {
+  font-weight: 300;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.desc-title {
+  font-weight: 600;
+}
+
+.desc-text {
+  font-weight: 300;
+}
+
+.desc {
+  margin-bottom: 7px;
+  margin-top: 0px;
+}
+
+.ovl {
+  max-height: 16px;
+  overflow: hidden;
+}
+
+.ovl2 {
+  max-height: 32px;
+  overflow: hidden;
+}
+
+.btn-long {
+  width: 191px;
+  height: 24px;
+  margin: 0px;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+  background: #3561d3;
+  border: none;
+  margin: 1px;
+}
+
+.btn-short {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-left: 3px;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-read {
+  background: #46aa2d;
+}
+
+.btn-addC {
+  background: lightsalmon;
+  margin-bottom: 6px;
+}
+
+.btn-addF {
+  background: #b7a1fa;
+  margin-bottom: 3px;
+}
+
+.btn-long,
+.btn-short {
+  opacity: 0.85;
+}
+
+.btn-long:hover,
+.btn-short:hover {
+  opacity: 1;
+}
+
+tr,
+td {
+  margin: 0px;
+  padding: 0px;
+}
+
+.books-place table {
+  position: absolute;
+  bottom: 0px;
+}

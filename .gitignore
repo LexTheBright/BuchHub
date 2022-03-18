@@ -1,0 +1,8 @@
+/.vscode
+/db
+/node_modules
+/package-lock.json
+/package.json
+/test.html
+/testing.html
+/webpack.config.js
