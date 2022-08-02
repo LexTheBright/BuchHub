@@ -6,7 +6,7 @@
 /test.html
 /testing.html
 /webpack.config.js
-/js
+*/js/*
 firebase.json
 firebase-debug.log
 webpack.config.js
