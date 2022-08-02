@@ -6,14 +6,9 @@
 /test.html
 /testing.html
 /webpack.config.js
-*/js/*
+/js
 firebase.json
 firebase-debug.log
 webpack.config.js
 /.*
-/db/*
-/src/*
-/favicon/*
 /js/*
-/public/*
-/node_modules/*
