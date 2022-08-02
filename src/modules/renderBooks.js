@@ -1,47 +1,50 @@
 import { getUserBooksFromServer } from "./dbOperations"
+import { togleAllBooksButtons } from "./authUser"
 
 var dict = {
-    Фантастика : "Fiction",
-    Поэзия : "Poetry",
-    Искусство : "Art",
-    История : "History",
-    Религия : "Religion",
-    Наука : "Science",
-    Криминал : "Crime",
-    Литература : "Literature"
-  }
+  Фантастика : "Fiction",
+  Поэзия : "Poetry",
+  Искусство : "Art",
+  История : "History",
+  Религия : "Religion",
+  Наука : "Science",
+  Криминал : "Crime",
+  Литература : "Literature",
+  Коллекция: "userBookshelf",
+  Избранное: "userFavorites"
+}
 
-  var langs = {
-    ru : 'Русский',
-    en : 'Английский'
-  }
+var langs = {
+  ru : 'Русский',
+  en : 'Английский'
+}
 
-  const getKeyByValue = (object, value) => {
-    return Object.keys(object).find(key => object[key] == value);
-  }
+const getKeyByValue = (object, value) => {
+  return Object.keys(object).find(key => object[key] == value);
+}
 
-  const getButtonContent = (book, keyword) => {
-    if (keyword == 'epub') {
-      return `
-      <button type="button" onclick="window.open('${book.accessInfo.epub.downloadLink}','popUpWindow','width=700,height=500,menubar=no');" class="btn-fb2 btn-long">
-        <span>Скачать ${keyword}</span>
-      </button>`
-    }
-    if (keyword == 'pdf') {
-      return `
-      <button type="button" onclick="window.open('${book.accessInfo.pdf.downloadLink}','popUpWindow','width=700,height=500,menubar=no');" class="btn-fb2 btn-long">
-        <span>Скачать ${keyword}</span>
-      </button>`
-    }
-    else {
-      return `
-      <button type="button" onclick="window.open('${book.saleInfo.buyLink}','popUpWindow','width=1000,height=1000,menubar=no');" class="btn-fb2 btn-long">
-        <span>Google Play</span>
-      </button>`
-    }
+const getButtonContent = (book, keyword) => {
+  if (keyword == 'epub') {
+    return `
+    <button type="button" onclick="window.open('${book.accessInfo.epub.downloadLink}','popUpWindow','width=700,height=500,menubar=no');" class="btn-fb2 btn-long">
+      <span>Скачать ${keyword}</span>
+    </button>`
   }
+  if (keyword == 'pdf') {
+    return `
+    <button type="button" onclick="window.open('${book.accessInfo.pdf.downloadLink}','popUpWindow','width=700,height=500,menubar=no');" class="btn-fb2 btn-long">
+      <span>Скачать ${keyword}</span>
+    </button>`
+  }
+  else {
+    return `
+    <button type="button" onclick="window.open('${book.saleInfo.buyLink}','popUpWindow','width=1000,height=1000,menubar=no');" class="btn-fb2 btn-long">
+      <span>Google Play</span>
+    </button>`
+  }
+}
   
-  export const renderBooks = (books) => {
+export const renderBooks = async (books) => {
   const goodsContainer = document.querySelector('.long-goods-list')
   
   goodsContainer.innerHTML = ''
@@ -52,22 +55,23 @@ var dict = {
     else curCategory = 'searched'
     localStorage.setItem('lastCategory', curCategory)
 
-    var userShelf 
-    getUserBooksFromServer('userBookshelf').then(res => {
-      if (res) {
-        localStorage.setItem('userBookshelf', JSON.stringify(res))
-        userShelf = res
-        console.log(userShelf)
-      }
-    })
-    var userFavorites 
-    getUserBooksFromServer('userFavorites').then(res => {
-      if (res) {
-        localStorage.setItem('userFavorites', JSON.stringify(res))
-        userFavorites = res
-        console.log(userFavorites)
-      }
-    })
+    // if (sessionStorage.getItem('isUserLoged') == "true") {
+    if (curCategory == 'userBookshelf') {
+      await getUserBooksFromServer('userBookshelf').then(res => {
+        if (res) {
+          localStorage.setItem('userBookshelf', JSON.stringify(res))
+          books = res
+        }
+      })
+    }
+    if (curCategory == 'userFavorites') {
+      await getUserBooksFromServer('userFavorites').then(res => {
+        if (res) {
+          localStorage.setItem('userFavorites', JSON.stringify(res))
+          books = res
+        }
+      })
+    }
 
     books.forEach((book) => {
       //if ()
@@ -114,11 +118,11 @@ var dict = {
                 </button>
               </td>
               <td rowspan="3">
-                <button class="btn-addC btn-short" data-id="${book.id}" data-category="${curCategory}" data-isAdded="">
-                  <img class="btn-icon" src="img/collection2.png" alt="icon: cart">
+                <button class="btn-addC btn-short" id="${book.id}" data-id="${book.id}" data-category="${curCategory}" data-isadded="false">
+                  <img class="btn-icon bsh-icon" src="img/collection2.png" alt="icon: bookshelf">
                 </button>
-                <button class="btn-addF btn-short" data-id="${book.id}" data-category="${curCategory}" data-isAdded="">
-                  <img class="btn-icon" src="img/collection.png" alt="icon: cart">
+                <button class="btn-addF btn-short" id="${book.id}" data-id="${book.id}" data-category="${curCategory}" data-isadded="false"">
+                  <img class="btn-icon fav-icon" src="img/minilove.png" alt="icon: favorive">
                 </button>
               </td>
             </tr>
@@ -140,4 +144,6 @@ var dict = {
       goodsContainer.append(bookBlock) 
     })
   }
+  if (sessionStorage.getItem('isUserLoged') == "true") togleAllBooksButtons()
 }
+

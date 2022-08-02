@@ -17,13 +17,12 @@ showAuthForm()
 
 import { checkDouble } from "./modules/regex";
 checkDouble()
-
-// import { cart } from "./modules/cart";
-// import { getBooks } from "./modules/getbooks";
-// getBooks()
  
-import { reg } from "./modules/reg";
+import { reg } from "./modules/regUser";
 reg()
 
 import { search } from "./modules/search";
 search()
+
+import { getBooks } from "./modules/getbooks";
+getBooks()

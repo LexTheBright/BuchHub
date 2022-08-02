@@ -4,12 +4,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Willberries</title>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<title>BuchHub</title>
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5"> -->
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/next.css">
-	<script src="dist/goods.js" defer></script>
+	<script src="dist/books.js" defer></script>
 </head>
 <!-- class="show-goods" -->
 
@@ -33,7 +33,7 @@
 				<nav>
 					<ul class="navigation d-flex justify-content-around">
 						<li class="navigation-item">
-							<a href="#" class="navigation-link" data-field="gender">Фантастика</a>
+							<a href="#" class="navigation-link" data-field="category">Фантастика</a>
 						</li>
 						<li class="navigation-item">
 							<a href="#" class="navigation-link col-sm-6" data-field="category">Искусство</a>
@@ -58,7 +58,7 @@
 					</ul>
 				</nav>
 			</div>
-			<div class="col-lg-2 d-none justify-content-between d-lg-block">
+			<!-- <div class="col-lg-2 d-none justify-content-between d-lg-block">
 				<div class="form-control search-block">
 					<input type="text" class="form-control search-input" placeholder="Поиск" aria-label="Recipient's username"
 						aria-describedby="button-addon2">
@@ -66,7 +66,7 @@
 						<img src="img/search.png" alt="search">
 					</button>
 				</div> 
-			</div>
+			</div> -->
 			<div class="col-lg-3 col-6 d-flex justify-content-end">
 				<button class="button button-signIn">
 					<img class="button-icon" src="img/cart.svg" alt="icon: cart">
@@ -75,23 +75,31 @@
 				</button>
 				<span class="auth-cl" id="nick-place"></span>
 				<button class="btn btn-col auth-cl" type="button" id="">
-					<img src="img/search.png" alt="search">
+					<img src="img/bookshelfs.png" alt="search">
 					<button class="btn btn-fav auth-cl" type="button" id="">
-					<img src="img/search.png" alt="search">
-					<button class="btn btn-out auth-cl" type="button" id="">
-						<img src="img/search.png" alt="search">
-					</button>
+						<img src="img/love.png" alt="search">
+						<button class="btn btn-out auth-cl" type="button" id="">
+							<img src="img/getout.png" alt="search">
+						</button>
 			</div>
 		</div>
-		<!-- /.row -->
 	</header>
 
 	<section class="long-goods d-block">
 		<div class="container-fluid">
 			<div class="row align-items-center mb-4">
-				<div class="col-12">
+				<div class="col-lg-9 col-md-6 col-6">
 					<h2 class="section-title">Категория</h2>
-					<button id="fuck">noway</button>
+				</div>
+				<div class="col-lg-3 col-6 d-flex justify-content-end">
+					<!-- <div class="col-lg-2 d-none justify-content-between d-lg-block"> -->
+					<div class="form-control search-block">
+						<input type="text" class="form-control search-input" placeholder="Поиск" aria-label="Recipient's username"
+							aria-describedby="button-addon2">
+						<button class="btn btn-outline-secondary" type="button" id="button-addon2">
+							<img src="img/search.png" alt="search">
+						</button>
+					</div>
 				</div>
 			</div>
 			<div class="row long-goods-list mb-4">
@@ -114,9 +122,8 @@
 						</ul>
 					</nav>
 				</div>
-				<!-- /.col-7 -->
 				<div class="col-lg-3 d-flex align-items-center">
-					<span class="footer-text">Подписывайся!</span>
+					<span class="footer-text">Подписывайся</span>
 					<span class="footer-social d-inline-flex align-items-center">
 						<a href="#" class="social-link">
 							<img src="img/Facebook.svg" alt="Facebook">
@@ -129,13 +136,10 @@
 						</a>
 					</span>
 				</div>
-				<!-- /.col-3 -->
 				<div class="col-xl-2 col-lg-3 d-flex justify-content-lg-end mt-4 mt-lg-0">
 					<span class="footer-text">© 2022 Lex Bright App</span>
 				</div>
-				<!-- /.col-2 -->
 			</div>
-			<!-- /.row -->
 			<hr class="footer-line mt-4 mb-4">
 			<div class="row justify-content-between">
 				<div class="col-lg-4 col-sm-9">
@@ -153,26 +157,29 @@
 				</div>
 				<!-- /.col-2 -->
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container -->
 	</footer>
+
+
 	<div class="overlay" id="reg">
 		<div class="modal">
 			<form id="regis_form" method="post">
 				<fieldset style="border-radius: 9px; border-color: #EC126CFF;">
 					<legend id="sign_in">Sign Up</legend>
 					<p><label for="LG">Никнейм</label><br>
-						<input id="LG" type="text" name="login" placeholder="Введите никнейм" value="" min="6" max="15" required
-							pattern="^[А-Яа-яA-Za-z0-9]{6,20}$">
+						<input id="LG" type="text" name="login" placeholder="Введите никнейм" value="" min="3" max="12" required
+							pattern="^[А-Яа-яA-Za-z0-9]{3,12}$">
 					</p>
 					<p><label for="EM">Почта</label><br>
-						<input id="EM" type="email" name="email" placeholder="Введите почту" value="" required
-							pattern="^[A-Za-z0-9@.-_]{4,35}\.[A-Za-z]{2,4}$">
+						<input id="EM" type="email" name="email" placeholder="Введите почту" value="" max="40" required
+							pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{2,20}@[a-zA-Z0-9-]{2,10}(?:\.[a-zA-Z0-9-]{1,10})+$">
+						<!-- pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]{2,4}$"> -->
+						<!-- pattern="^[A-Za-z0-9@.-_]{4,35}\.[A-Za-z]{2,4}$"> -->
+						<!-- pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"> -->
 					</p>
 					<p><label for="PW">Пароль</label><br>
-						<input id="PW" type="password" name="password" placeholder="Введите пароль" value="" min="8" max="20" required
-							pattern="^[А-Яа-яA-Za-z0-9]{8,20}$">
+						<input id="PW" type="password" name="password" placeholder="Введите пароль" value="" min="8" max="20"
+							required pattern="^[А-Яа-яA-Za-z0-9]{8,20}$">
 					</p>
 					<p> <label for="PW2">Повторите пароль</label><br>
 						<input id="PW2" type="password" name="password_2" placeholder="Повторите пароль" value="" min="8" max="20"
@@ -192,8 +199,8 @@
 				<fieldset style="border-radius: 2%; border-color: #EC126CFF;">
 					<legend id="log_in">log In</legend>
 					<p><label for="LGE">Почта</label><br>
-						<input id="LGE" type="email" placeholder="Введите почту" value="" required
-							pattern="^[A-Za-z0-9@.-_]{4,35}\.[A-Za-z]{2,4}$">
+						<input id="LGE" type="email" placeholder="Введите почту" value="" max="40" required
+							pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{2,20}@[a-zA-Z0-9-]{2,10}(?:\.[a-zA-Z0-9-]{1,10})+$">
 					</p>
 					<p><label for="LGP">Пароль</label><br>
 						<input id="LGP" type="password" placeholder="Введите пароль" value="" min="8" max="20" required
@@ -206,6 +213,8 @@
 				</fieldset>
 			</form>
 		</div>
+	</div>
+	<div class="overlay" id="messagee">
 	</div>
 	<!-- <div class="overlay" id="modal-cart">
 		<div class="modal">
